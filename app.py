@@ -9,7 +9,7 @@ st.set_page_config(page_title="My PopAi Clone", layout="wide")
 # This looks for the key in the "Secrets" vault, not in this file.
 try:
     genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
-    model = genai.GenerativeModel("gemini-1.5-flash")
+    model = genai.GenerativeModel("gemini-2.5-pro")
 except Exception as e:
     st.error("API Key not found. Please set it in Streamlit Secrets.")
     st.stop()
@@ -54,3 +54,4 @@ if prompt := st.chat_input("Ask a question about your PDF..."):
                 st.session_state.messages.append({"role": "assistant", "content": response.text})
             except Exception as e:
                 st.error(f"An error occurred: {e}")
+

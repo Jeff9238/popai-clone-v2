@@ -25,7 +25,7 @@ if not st.session_state.logged_in:
 # --- 2. THE PREMIUM CONTENT (Only runs if logged_in is True) ---
 try:
     genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
-    model = genai.GenerativeModel("gemini-1.5-flash")
+    model = genai.GenerativeModel("gemini-2.5-pro")
 except Exception:
     st.error("API Key missing.")
     st.stop()
@@ -44,3 +44,4 @@ if uploaded_file:
         with st.spinner("Processing..."):
             response = model.generate_content(["Describe this image", image])
             st.write(response.text)
+
